@@ -106,7 +106,7 @@ func (c Collection) Filter(callback interface{}, Opts ...Option) error {
 		}
 		outVals := reflect.ValueOf(callback).Call([]reflect.Value{reflect.ValueOf(c[i])})
 		if len(outVals) == 0 {
-			return nil
+			continue
 		}
 		if last := outVals[len(outVals)-1]; isError(last.Type()) {
 			if err, _ := last.Interface().(error); err != nil {

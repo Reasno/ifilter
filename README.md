@@ -14,10 +14,8 @@ import (
 
 func main() {
 	var collection = ifilter.Collection{&os.File{}, &bytes.Buffer{}, struct{}{}, nil, 42}
-	collection.Filter(func(readers []io.Reader) {
-		for _, reader := range readers {
-			fmt.Printf("%T\n", reader)
-		}
+	collection.Filter(func(reader io.Reader) {
+		fmt.Printf("%T\n", reader)
 	})
 	/*
 		*os.File
