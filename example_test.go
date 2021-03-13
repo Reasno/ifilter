@@ -9,7 +9,7 @@ import (
 )
 
 func Example() {
-	var collection = ifilter.Collection{&os.File{}, &bytes.Buffer{}, struct{}{}, nil, 42}
+	var collection = ifilter.Collection{&os.File{}, &bytes.Buffer{}, struct{}{}, nil, 42, (io.Reader)(nil)}
 	collection.Filter(func(reader io.Reader) {
 		fmt.Printf("%T\n", reader)
 	})
